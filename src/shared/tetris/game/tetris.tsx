@@ -2,7 +2,6 @@ import { useCallback, useEffect, useState } from 'react';
 import { Board } from 'shared';
 import { useBoard, useInterval, usePlayer } from 'hooks';
 import { isColliding } from 'utils';
-import './tetris.css';
 import { Box, Button } from '@chakra-ui/react';
 
 export const Tetris = () => {
@@ -72,9 +71,17 @@ export const Tetris = () => {
   );
 
   return (
-    <Box className="Tetris" display="flex" flexDirection="column">
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexDirection="column"
+      height="100vh"
+    >
       <Button
         mb={4}
+        maxWidth="340px"
+        w="100%"
         onClick={() => {
           if (gameOver) {
             resetBoard();

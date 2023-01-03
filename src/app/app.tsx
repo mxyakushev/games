@@ -1,9 +1,10 @@
 import { Tetris } from 'shared';
+import { Box } from '@chakra-ui/react';
 
 export const App = () => {
   return (
-    <div className="App">
+    <Box>
       <Tetris />
-    </div>
+    </Box>
   );
 };
