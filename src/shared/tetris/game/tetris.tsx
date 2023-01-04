@@ -99,6 +99,7 @@ export const Tetris = () => {
             setScore(0);
             setLevel(1);
             setRows(0);
+            setDropTime(500);
             resetBoard();
             resetPlayer();
           }
