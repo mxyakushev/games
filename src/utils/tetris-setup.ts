@@ -1,10 +1,10 @@
 import { IPlayer, ITetromino, KeyChar } from 'types';
 
-export const WIDTH = 10;
+export const WIDTH = 14;
 export const HEIGHT = 16;
 export const ROWPOINTS = [40, 100, 300, 1200];
 export const tetromino: ITetromino = {
-  0: { shape: [[0]], color: 'black' },
+  0: { shape: [[0]], color: '#000' },
   I: {
     shape: [
       [0, 'I', 0, 0],
@@ -12,7 +12,7 @@ export const tetromino: ITetromino = {
       [0, 'I', 0, 0],
       [0, 'I', 0, 0],
     ],
-    color: 'red',
+    color: '#7b435b',
   },
   J: {
     shape: [
@@ -20,7 +20,7 @@ export const tetromino: ITetromino = {
       [0, 'J', 0],
       ['J', 'J', 0],
     ],
-    color: 'blue',
+    color: '#8b687f',
   },
   L: {
     shape: [
@@ -28,14 +28,14 @@ export const tetromino: ITetromino = {
       [0, 'L', 0],
       [0, 'L', 'L'],
     ],
-    color: 'yellow',
+    color: '#9584a1',
   },
   O: {
     shape: [
       ['O', 'O'],
       ['O', 'O'],
     ],
-    color: 'purple',
+    color: '#9fa0c3',
   },
   S: {
     shape: [
@@ -43,7 +43,7 @@ export const tetromino: ITetromino = {
       ['S', 'S', 0],
       [0, 0, 0],
     ],
-    color: 'green',
+    color: '#a7bdd2',
   },
   T: {
     shape: [
@@ -51,7 +51,7 @@ export const tetromino: ITetromino = {
       ['T', 'T', 'T'],
       [0, 'T', 0],
     ],
-    color: 'orange',
+    color: '#AED9E0',
   },
   Z: {
     shape: [
@@ -59,7 +59,7 @@ export const tetromino: ITetromino = {
       [0, 'Z', 'Z'],
       [0, 0, 0],
     ],
-    color: 'lightgreen',
+    color: '#bcf8ec',
   },
 };
 

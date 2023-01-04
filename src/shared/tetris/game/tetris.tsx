@@ -81,16 +81,16 @@ export const Tetris = () => {
 
   return (
     <Box pt={5} display="flex" flexDirection="column" alignItems="center">
-      <Box maxWidth="340px" w="full">
-        <Badge colorScheme="green" fontSize={window.innerWidth < 500 ? 'sm' : 'md'} mb={1} w="full">
+      <Box maxWidth="500px" w="full" textAlign="center">
+        <Badge colorScheme="green" fontSize={window.innerWidth < 500 ? 'sm' : 'lg'} mb={1} w="full">
           score: {score}
         </Badge>
-        <Badge colorScheme="red" fontSize={window.innerWidth < 500 ? 'sm' : 'md'} mb={1} w="full">
+        <Badge colorScheme="red" fontSize={window.innerWidth < 500 ? 'sm' : 'lg'} mb={1} w="full">
           rows: {rows}
         </Badge>
         <Badge
           colorScheme="purple"
-          fontSize={window.innerWidth < 500 ? 'sm' : 'md'}
+          fontSize={window.innerWidth < 500 ? 'sm' : 'lg'}
           mb={1}
           w="full"
         >
