@@ -1,4 +1,4 @@
-import { KeyChar } from 'types/keyType';
+import { KeyChar } from 'types';
 
 export interface IBoard {
   board: [KeyChar, string][][];

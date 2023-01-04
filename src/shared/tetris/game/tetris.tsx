@@ -1,14 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Board } from 'shared';
-import { useBoard, useInterval, usePlayer } from 'hooks';
+import { useBoard, useGameStats, useInterval, usePlayer } from 'hooks';
 import { isColliding } from 'utils';
-import { Box, Button } from '@chakra-ui/react';
+import { Badge, Box, Button, Heading } from '@chakra-ui/react';
+import { FiRotateCw } from 'react-icons/fi';
+import { HiArrowNarrowDown, HiArrowNarrowLeft, HiArrowNarrowRight } from 'react-icons/hi';
 
 export const Tetris = () => {
   const [dropTime, setDropTime] = useState(500);
   const [player, updatePlayerPos, resetPlayer, rotatePlayer] = usePlayer();
   const [gameOver, setGameOver] = useState(true);
-  const [board, resetBoard] = useBoard(player, resetPlayer);
+  const [board, resetBoard, rowsCleared] = useBoard(player, resetPlayer);
+  const { score, setScore, rows, setRows, level, setLevel } = useGameStats(rowsCleared);
 
   const movePlayer = useCallback(
     (dir: number) => {
@@ -19,6 +22,12 @@ export const Tetris = () => {
   );
 
   const drop = useCallback(() => {
+    if (rows > level * 10) {
+      setLevel((prev) => prev + 1);
+      // Also increase speed
+      setDropTime((prevState) => prevState * 1.5);
+    }
+
     if (!isColliding(player, board, { moveX: 0, moveY: 1 })) {
       updatePlayerPos({ x: 0, y: 1, collided: false });
     } else if (player.pos.y === 0) {
@@ -26,7 +35,7 @@ export const Tetris = () => {
     } else {
       updatePlayerPos({ x: 0, y: 0, collided: true });
     }
-  }, [board, player, updatePlayerPos]);
+  }, [board, level, player, rows, setLevel, updatePlayerPos]);
 
   const dropPlayer = useCallback(() => {
     setDropTime(50);
@@ -45,7 +54,7 @@ export const Tetris = () => {
         rotatePlayer(board);
       }
     },
-    [dropPlayer, gameOver, movePlayer, rotatePlayer]
+    [board, dropPlayer, gameOver, movePlayer, rotatePlayer]
   );
 
   useEffect(() => {
@@ -71,28 +80,60 @@ export const Tetris = () => {
   );
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-      height="100vh"
-    >
-      <Button
-        mb={4}
-        maxWidth="340px"
-        w="100%"
+    <Box pt={5} display="flex" flexDirection="column" alignItems="center" height="100vh">
+      <Box maxWidth="340px" w="full">
+        <Badge colorScheme="green" fontSize="md" mb={1} w="full">
+          score: {score}
+        </Badge>
+        <Badge colorScheme="red" fontSize="md" mb={1} w="full">
+          rows: {rows}
+        </Badge>
+        <Badge colorScheme="purple" fontSize="md" mb={1} w="full">
+          level: {level}
+        </Badge>
+      </Box>
+      <Box
+        mb={1}
         onClick={() => {
           if (gameOver) {
+            setScore(0);
+            setLevel(1);
+            setRows(0);
             resetBoard();
             resetPlayer();
           }
-          setGameOver((prevState) => !prevState);
+          setGameOver(false);
         }}
       >
-        {gameOver ? 'Start' : 'End Game'}
-      </Button>
-      <Board board={board} />
+        <Board board={board} />
+      </Box>
+      {gameOver ? (
+        <Heading size="lg">Click on the Board</Heading>
+      ) : (
+        <Box>
+          <Box display="flex" justifyContent="center" mb={2}>
+            <Button w="100px" onTouchStart={() => move({ keyCode: 38, repeat: false })}>
+              <FiRotateCw size={24} />
+            </Button>
+          </Box>
+          <Box>
+            <Button w="100px" mr={1} onTouchStart={() => move({ keyCode: 37, repeat: false })}>
+              <HiArrowNarrowLeft size={24} />
+            </Button>
+            <Button
+              w="100px"
+              mx={1}
+              onTouchStart={() => move({ keyCode: 40, repeat: false })}
+              onTouchEnd={() => setDropTime(500)}
+            >
+              <HiArrowNarrowDown size={24} />
+            </Button>
+            <Button w="100px" ml={1} onTouchStart={() => move({ keyCode: 39, repeat: false })}>
+              <HiArrowNarrowRight size={24} />
+            </Button>
+          </Box>
+        </Box>
+      )}
     </Box>
   );
 };
