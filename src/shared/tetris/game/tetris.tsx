@@ -38,7 +38,7 @@ export const Tetris = () => {
   }, [board, level, player, rows, setLevel, updatePlayerPos]);
 
   const dropPlayer = useCallback(() => {
-    setDropTime(50);
+    setDropTime(100);
     drop();
   }, [drop]);
 
