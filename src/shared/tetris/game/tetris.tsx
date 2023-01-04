@@ -38,7 +38,7 @@ export const Tetris = () => {
   }, [board, level, player, rows, setLevel, updatePlayerPos]);
 
   const dropPlayer = useCallback(() => {
-    setDropTime(100);
+    setDropTime(80);
     drop();
   }, [drop]);
 
@@ -110,7 +110,7 @@ export const Tetris = () => {
       </Box>
       {gameOver ? (
         <Heading size="lg">Click on the Board</Heading>
-      ) : (
+      ) : window.innerWidth < 1000 ? (
         <Box>
           <Box display="flex" justifyContent="center" mb={2}>
             <Button w="100px" onTouchStart={() => move({ keyCode: 38, repeat: false })}>
@@ -134,7 +134,7 @@ export const Tetris = () => {
             </Button>
           </Box>
         </Box>
-      )}
+      ) : null}
     </Box>
   );
 };
