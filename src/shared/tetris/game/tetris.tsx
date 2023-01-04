@@ -80,15 +80,20 @@ export const Tetris = () => {
   );
 
   return (
-    <Box pt={5} display="flex" flexDirection="column" alignItems="center" height="100vh">
+    <Box pt={5} display="flex" flexDirection="column" alignItems="center">
       <Box maxWidth="340px" w="full">
-        <Badge colorScheme="green" fontSize="md" mb={1} w="full">
+        <Badge colorScheme="green" fontSize={window.innerWidth < 500 ? 'sm' : 'md'} mb={1} w="full">
           score: {score}
         </Badge>
-        <Badge colorScheme="red" fontSize="md" mb={1} w="full">
+        <Badge colorScheme="red" fontSize={window.innerWidth < 500 ? 'sm' : 'md'} mb={1} w="full">
           rows: {rows}
         </Badge>
-        <Badge colorScheme="purple" fontSize="md" mb={1} w="full">
+        <Badge
+          colorScheme="purple"
+          fontSize={window.innerWidth < 500 ? 'sm' : 'md'}
+          mb={1}
+          w="full"
+        >
           level: {level}
         </Badge>
       </Box>
@@ -113,23 +118,23 @@ export const Tetris = () => {
       ) : window.innerWidth < 1000 ? (
         <Box>
           <Box display="flex" justifyContent="center" mb={2}>
-            <Button w="100px" onTouchStart={() => move({ keyCode: 38, repeat: false })}>
+            <Button w="70px" onTouchStart={() => move({ keyCode: 38, repeat: false })}>
               <FiRotateCw size={24} />
             </Button>
           </Box>
           <Box>
-            <Button w="100px" mr={1} onTouchStart={() => move({ keyCode: 37, repeat: false })}>
+            <Button w="70px" mr={1} onTouchStart={() => move({ keyCode: 37, repeat: false })}>
               <HiArrowNarrowLeft size={24} />
             </Button>
             <Button
-              w="100px"
+              w="70px"
               mx={1}
               onTouchStart={() => move({ keyCode: 40, repeat: false })}
               onTouchEnd={() => setDropTime(500)}
             >
               <HiArrowNarrowDown size={24} />
             </Button>
-            <Button w="100px" ml={1} onTouchStart={() => move({ keyCode: 39, repeat: false })}>
+            <Button w="70px" ml={1} onTouchStart={() => move({ keyCode: 39, repeat: false })}>
               <HiArrowNarrowRight size={24} />
             </Button>
           </Box>

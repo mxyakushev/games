@@ -1,7 +1,7 @@
 import { IPlayer, ITetromino, KeyChar } from 'types';
 
 export const WIDTH = 10;
-export const HEIGHT = 17;
+export const HEIGHT = 16;
 export const ROWPOINTS = [40, 100, 300, 1200];
 export const tetromino: ITetromino = {
   0: { shape: [[0]], color: 'black' },
