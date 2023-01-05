@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Cell } from 'shared';
+import { Cell } from 'components';
 import { IBoard } from 'types';
 import { Grid } from '@chakra-ui/react';
 import { HEIGHT, WIDTH } from 'utils';

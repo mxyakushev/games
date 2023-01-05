@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Board } from 'shared';
+import { Board } from 'components';
 import { useBoard, useGameStats, useInterval, usePlayer } from 'hooks';
 import { isColliding } from 'utils';
 import { Badge, Box, Button, Heading } from '@chakra-ui/react';
