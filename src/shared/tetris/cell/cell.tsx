@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const BoardCell: FC<IProps> = ({ type }) => {
-  return <Box backgroundColor={tetromino[type]?.color} />;
+  return <Box borderRadius="5px" backgroundColor={tetromino[type]?.color} />;
 };
 
 export const Cell = memo(BoardCell);

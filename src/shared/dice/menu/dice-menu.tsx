@@ -9,14 +9,14 @@ import {
   ModalOverlay,
   useDisclosure,
 } from '@chakra-ui/react';
-import { Tetris } from '../game';
+import { Dice } from '../game';
 
-export const TetrisMenu = () => {
+export const DiceMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box mb={2}>
       <Button width="full" onClick={onOpen}>
-        Tetris
+        Dice
       </Button>
       <Modal
         isOpen={isOpen}
@@ -30,7 +30,7 @@ export const TetrisMenu = () => {
             <ModalCloseButton />
           </Box>
           <ModalBody>
-            <Tetris />
+            <Dice />
           </ModalBody>
         </ModalContent>
       </Modal>

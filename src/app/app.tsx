@@ -1,5 +1,5 @@
-import { Box } from '@chakra-ui/react';
-import { MemoryMenu, TetrisMenu } from 'shared';
+import { Box, Card, CardBody, CardHeader } from '@chakra-ui/react';
+import { Background, DiceMenu, MemoryMenu, TetrisMenu } from 'shared';
 
 export const App = () => {
   return (
@@ -10,8 +10,15 @@ export const App = () => {
       justifyContent="center"
       alignItems="center"
     >
-      <TetrisMenu />
-      <MemoryMenu />
+      <Background />
+      <Card>
+        <CardHeader fontSize="30px">Play some games !</CardHeader>
+        <CardBody>
+          <TetrisMenu />
+          <MemoryMenu />
+          <DiceMenu />
+        </CardBody>
+      </Card>
     </Box>
   );
 };

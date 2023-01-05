@@ -15,7 +15,7 @@ export const MemoryMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box mb={2}>
-      <Button width="100px" onClick={onOpen}>
+      <Button width="full" onClick={onOpen}>
         Memory
       </Button>
       <Modal
