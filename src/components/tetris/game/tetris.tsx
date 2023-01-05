@@ -25,7 +25,7 @@ export const Tetris = () => {
     if (rows > level * 10) {
       setLevel((prev) => prev + 1);
       // Also increase speed
-      setDropTime((prevState) => prevState / 1.5);
+      setDropTime((prevState) => prevState / 1.3);
     }
 
     if (!isColliding(player, board, { moveX: 0, moveY: 1 })) {
@@ -38,7 +38,7 @@ export const Tetris = () => {
   }, [board, level, player, rows, setLevel, updatePlayerPos]);
 
   const dropPlayer = useCallback(() => {
-    setDropTime(100);
+    setDropTime(120);
     drop();
   }, [drop]);
 
