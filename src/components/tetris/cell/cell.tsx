@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 import { tetromino } from 'utils';
 import { KeyChar } from 'types';
 import { Box } from '@chakra-ui/react';

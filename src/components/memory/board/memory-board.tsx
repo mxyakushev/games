@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Badge, Box, Grid, Image } from '@chakra-ui/react';
 import { memesArray } from '../assets';
 

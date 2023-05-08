@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { AllProviders, App } from 'app';
 import './index.css';
